@@ -51,7 +51,7 @@ function App() {
     }
   });
 
-  // AUTHENTICATION STATE
+  // AUTHENTICATION
   const [mode, setMode] = useState("login");
   const [authRole, setAuthRole] = useState("patient");
   const [doctorSetupKey, setDoctorSetupKey] = useState("");
@@ -96,10 +96,7 @@ function App() {
     setError(isError ? text : "");
   }
 
-  // --------------------------------
   // LOGOUT
-  // --------------------------------
-
   function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -126,10 +123,7 @@ function App() {
     setForm({ name: "", email: "", password: "" });
   }
 
-  // --------------------------------
-  // PATIENT AND DOCTOR AUTHENTICATION
-  // --------------------------------
-
+  // AUTHENTICATION
   async function submitAuth(e) {
     e.preventDefault();
     setLoading(true);
@@ -214,10 +208,7 @@ function App() {
     }
   }
 
-  // --------------------------------
   // PATIENT: LOAD READINGS AND REPORTS
-  // --------------------------------
-
   async function loadData(
     currentToken = token,
     date = reportDate
@@ -261,10 +252,7 @@ function App() {
     }
   }
 
-  // --------------------------------
   // DOCTOR: LOAD ASSIGNED PATIENTS
-  // --------------------------------
-
   async function loadPatients() {
     if (!token || !isDoctor) return;
 
@@ -296,10 +284,7 @@ function App() {
     }
   }
 
-  // --------------------------------
   // DOCTOR: SELECT PATIENT
-  // --------------------------------
-
   async function selectPatient(patient) {
     setSelectedPatient(patient);
     setPatientReadings([]);
@@ -342,10 +327,7 @@ function App() {
     }
   }
 
-  // --------------------------------
   // DOCTOR: CHANGE PATIENT REPORT DATE
-  // --------------------------------
-
   async function changePatientReportDate(date) {
     if (!date || !selectedPatient) return;
 
@@ -373,10 +355,7 @@ function App() {
     }
   }
 
-  // --------------------------------
   // LOAD CORRECT DASHBOARD
-  // --------------------------------
-
   useEffect(() => {
     if (!token || !user) return;
 
@@ -391,10 +370,7 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
-  // --------------------------------
   // PATIENT: SAVE OR UPDATE READING
-  // --------------------------------
-
   async function saveReading(e) {
     e.preventDefault();
     notify("");
@@ -465,6 +441,7 @@ function App() {
     });
   }
 
+  // PATIENT: DELETE READING
   async function deleteReading(id) {
     if (
       !window.confirm(
@@ -487,10 +464,7 @@ function App() {
     }
   }
 
-  // --------------------------------
   // PATIENT: CHANGE REPORT DATE
-  // --------------------------------
-
   async function changeReportDate(date) {
     if (!date) return;
 
@@ -517,10 +491,7 @@ function App() {
     }
   }
 
-  // --------------------------------
   // PATIENT: ANALYTICS
-  // --------------------------------
-
   const chartData = useMemo(() => {
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - (chartRange - 1));
@@ -562,10 +533,7 @@ function App() {
   const dailyMin = reports?.daily?.min;
   const dailyMax = reports?.daily?.max;
 
-  // --------------------------------
   // PATIENT: PDF DOWNLOAD
-  // --------------------------------
-
   function downloadReport() {
     if (!reports) {
       notify("Report data is not available.", true);
@@ -587,12 +555,13 @@ function App() {
       y += size >= 16 ? 12 : 8;
     };
 
-    doc.setTextColor(23, 105, 170);
+    // Pink PDF heading
+    doc.setTextColor(190, 78, 119);
     doc.setFontSize(22);
     doc.text("Sweety - Blood Glucose Report", 20, y);
 
     y += 15;
-    doc.setTextColor(35, 59, 83);
+    doc.setTextColor(56, 43, 51);
 
     addText(`Patient: ${user?.name || "User"}`, 12);
     addText(`Report date: ${reportDate}`, 12);
@@ -683,8 +652,6 @@ function App() {
             Track glucose readings and understand health trends.
           </p>
 
-          {/* ACCOUNT TYPE SELECTOR */}
-
           <div className="auth-role-selector">
             <button
               type="button"
@@ -764,8 +731,6 @@ function App() {
                 required
               />
             </label>
-
-            {/* DOCTOR REGISTRATION SETUP KEY */}
 
             {mode === "register" && authRole === "doctor" && (
               <label>
@@ -1333,7 +1298,7 @@ function App() {
           <div className="notice error">{error}</div>
         )}
 
-        {/* PATIENT DASHBOARD PAGE */}
+        {/* PATIENT DASHBOARD */}
 
         {activePage === "dashboard" && (
           <>
@@ -1614,7 +1579,7 @@ function App() {
           </>
         )}
 
-        {/* PATIENT ANALYTICS PAGE */}
+        {/* PATIENT ANALYTICS */}
 
         {activePage === "analytics" && (
           <>
@@ -1698,28 +1663,28 @@ function App() {
                         >
                           <stop
                             offset="0%"
-                            stopColor="#38A5F5"
-                            stopOpacity={0.28}
+                            stopColor="#D96E91"
+                            stopOpacity={0.3}
                           />
                           <stop
                             offset="100%"
-                            stopColor="#38A5F5"
+                            stopColor="#D96E91"
                             stopOpacity={0.02}
                           />
                         </linearGradient>
                       </defs>
 
                       <CartesianGrid
-                        stroke="#E5EDF5"
+                        stroke="#F3DCE5"
                         strokeDasharray="4 5"
                         vertical={false}
                       />
 
                       <XAxis
                         dataKey="date"
-                        stroke="#9AAFC3"
+                        stroke="#C49AAA"
                         tick={{
-                          fill: "#60758C",
+                          fill: "#927B86",
                           fontSize: 11,
                         }}
                         tickLine={false}
@@ -1727,9 +1692,9 @@ function App() {
                       />
 
                       <YAxis
-                        stroke="#9AAFC3"
+                        stroke="#C49AAA"
                         tick={{
-                          fill: "#60758C",
+                          fill: "#927B86",
                           fontSize: 11,
                         }}
                         tickLine={false}
@@ -1741,13 +1706,13 @@ function App() {
                       <Tooltip
                         contentStyle={{
                           background: "#FFFFFF",
-                          border: "1px solid #DCEAF7",
+                          border: "1px solid #F3DCE5",
                           borderRadius: "12px",
-                          color: "#183B5B",
+                          color: "#382B33",
                           boxShadow:
-                            "0 6px 20px rgba(40, 100, 160, 0.10)",
+                            "0 6px 20px rgba(190, 78, 119, 0.10)",
                         }}
-                        labelStyle={{ color: "#52718A" }}
+                        labelStyle={{ color: "#AD4568" }}
                         formatter={(value) => [
                           `${value} mg/dL`,
                           "Glucose",
@@ -1760,18 +1725,18 @@ function App() {
                       <Area
                         type="monotone"
                         dataKey="glucose"
-                        stroke="#2689D8"
+                        stroke="#D96E91"
                         strokeWidth={3}
                         fill="url(#glucoseGradient)"
                         dot={{
                           r: 4,
-                          fill: "#2689D8",
+                          fill: "#D96E91",
                           stroke: "#FFFFFF",
                           strokeWidth: 2,
                         }}
                         activeDot={{
                           r: 7,
-                          fill: "#1674BD",
+                          fill: "#AD4568",
                         }}
                       />
                     </AreaChart>
@@ -1830,7 +1795,7 @@ function App() {
           </>
         )}
 
-        {/* PATIENT REPORTS PAGE */}
+        {/* PATIENT REPORTS */}
 
         {activePage === "reports" && (
           <>
@@ -1948,10 +1913,7 @@ function App() {
   );
 }
 
-// ================================================
 // REUSABLE STATISTICS CARD
-// ================================================
-
 function Stat({ icon, title, value, suffix, accent }) {
   return (
     <article className={`stat-card glass-card ${accent}`}>
@@ -1968,10 +1930,7 @@ function Stat({ icon, title, value, suffix, accent }) {
   );
 }
 
-// ================================================
 // REUSABLE REPORT CARD
-// ================================================
-
 function Report({ title, data, accent }) {
   return (
     <article className={`report-card ${accent}`}>
