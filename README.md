@@ -102,7 +102,7 @@ Make sure you have installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/SruthiSriram10/Sweety-Blood-Glucose-Tracker/
+git clone https://github.com/nishanth312005/Sweety-Blood-Glucose-Tracker
 ```
 
 ```bash
@@ -218,15 +218,14 @@ The application includes the following modules:
 9. Doctor Dashboard
 10. Patient Assignment and Monitoring
 
-<img width="1220" height="886" alt="image" src="https://github.com/user-attachments/assets/e62a0ec0-295c-45d5-9b9e-b25e00dd6da8" />
-<img width="1231" height="906" alt="image" src="https://github.com/user-attachments/assets/f3aaffad-6452-4913-a779-8d51ae8701d2" />
-<img width="1232" height="902" alt="image" src="https://github.com/user-attachments/assets/abdd2deb-b6e6-40c4-88db-a167c97dbfc8" />
-<img width="1228" height="916" alt="image" src="https://github.com/user-attachments/assets/e838ad43-4867-4bcf-aab4-7d0b15ed7fce" />
-<img width="1230" height="887" alt="image" src="https://github.com/user-attachments/assets/c907cdb0-2cb9-457e-982b-3f095966964d" />
-<img width="1217" height="881" alt="image" src="https://github.com/user-attachments/assets/23e2c061-0961-4f1c-8a7b-14d4fe31823b" />
+
 
 
 ---
+<img width="1222" height="887" alt="Screenshot 2026-11-13 215035" src="https://github.com/user-attachments/assets/a6eca75b-cbfb-4a4e-b6ec-22ac1fc11780" />
+<img width="1212" height="892" alt="Screenshot 2026-11-13 215141" src="https://github.com/user-attachments/assets/ff15e68b-f072-43b7-8a20-7e06681b9cc0" />
+<img width="1201" height="893" alt="Screenshot 2026-11-13 215303" src="https://github.com/user-attachments/assets/bace7bfd-f170-4581-aac6-02fa3a4c1012" />
+<img width="1217" height="861" alt="Screenshot 2026-11-13 215320" src="https://github.com/user-attachments/assets/b0112c92-8afb-4a38-b53d-65d17f8180f6" />
 
 ## 🎯 Project Objectives
 
@@ -257,11 +256,11 @@ Sweety is an educational and health-monitoring project. It is not intended to re
 
 ## 👩‍💻 Developed By
 
-**Sruthi S**
+**Nishanth M**
 
 M.Sc. Software Systems  
 KG College of Arts and Science
-sriramsruthi10@gmail.com
+m.nishanthmanian@gmail.com
 
 **Project:** Sweety – Blood Glucose Tracker
 
